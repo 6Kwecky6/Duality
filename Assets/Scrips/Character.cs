@@ -28,23 +28,48 @@ public class Character : MonoBehaviour
         Debug.Log(gameObject.name + " targets " + target.name);
         
         //Create rotation of the arrows
-        Quaternion rot = Quaternion.identity;
+        /*Quaternion rot = Quaternion.identity;
         if (!ally)
         {
             rot = Quaternion.Euler(0,180,0);
-        }
+        }*/
         
         //Scale the target arrows
         Vector3 to = target.transform.position;
         Vector3 from =  transform.position;
         float mid_x = (from.x + to.x)/2f;
         //float scale_target_x = 
-        targeter_prefab.transform.localScale = new Vector3((to.x - from.x)/8f, 2.0f, 1f);
+        if (!ally)
+        { 
+            targeter_prefab.transform.localScale = new Vector3((to.x - from.x)/4.5f, -2.0f, 1f);
+        }
+        else
+        {
+            targeter_prefab.transform.localScale = new Vector3((to.x - from.x)/4.9f, 2.0f, 1f);
+
+
+        }
         
         
+        
+        float start_x;
+        float start_y;
+        
+
+        if (!ally)
+        {
+        start_y= -2f;
+        start_x = mid_x-0.1f;
+        }
+        else
+        {
+        start_y= 3f;
+        start_x = mid_x+0.5f;
+        
+        }
         Instantiate(targeter_prefab,
-            new Vector3(mid_x, 2.0f, 0.0f),
-            rot);
+        new Vector3(start_x, start_y, 0.0f),
+        Quaternion.identity);
     }
     
     // Start is called before the first frame update
