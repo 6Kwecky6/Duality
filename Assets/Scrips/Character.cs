@@ -22,23 +22,29 @@ public class Character : MonoBehaviour
 
     void make_choice()
     {
+        //Choose damage
         rand_dmg = Random.Range(0, max_rand_dmg);
         target = enemies.transform.GetChild(Random.Range(0, enemies.transform.childCount)).gameObject;
         Debug.Log(gameObject.name + " targets " + target.name);
         
+        //Create rotation of the arrows
         Quaternion rot = Quaternion.identity;
         if (!ally)
         {
             rot = Quaternion.Euler(0,180,0);
         }
         
-        float to_x = target.transform.position.x;
-        float from_x =  transform.position.x;
+        //Scale the target arrows
+        Vector3 to = target.transform.position;
+        Vector3 from =  transform.position;
+        float mid_x = (from.x + to.x)/2f;
+        //float scale_target_x = 
+        targeter_prefab.transform.localScale = new Vector3((to.x - from.x)/8f, 2.0f, 1f);
+        
+        
         Instantiate(targeter_prefab,
-            new Vector3((from_x + to_x) / 2f, 2.0f, 0.0f),
+            new Vector3(mid_x, 2.0f, 0.0f),
             rot);
-        Vector3 direction = target.transform.position - targeter_prefab.transform.position;
-        targeter_prefab.transform.localScale= new Vector3(direction.magnitude/2f,2f,1);
     }
     
     // Start is called before the first frame update
