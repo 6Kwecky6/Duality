@@ -8,18 +8,27 @@ using Random = UnityEngine.Random;
 public class Character : MonoBehaviour
 {
     public bool ally;
+    public GameObject targeter_prefab;
     
-    private int hp = 100;
-
+    
+    
+    //[HideInInspector]
     public int base_dmg = 20;
-    public int max_rand_dmg = 4;
+    //[HideInInspector]
+    public int max_rand_dmg = 40;
+    [HideInInspector]
     public int rand_dmg;
-
+    [HideInInspector]
     public GameObject target;
+    [HideInInspector]
+    public GameObject target_arrow;
+    
+    public int hp = 100;
+    
     private GameObject enemies;
 
-    public GameObject targeter_prefab;
-    public GameObject target_arrow;
+    
+    
 
     public void take_damage(int dmg)
     {
@@ -31,11 +40,6 @@ public class Character : MonoBehaviour
         {
             Debug.Log(name + " has been defeated");
             Destroy(gameObject);
-        }
-        else
-        {
-            
-            make_choice();
         }
     }
     void clean()
@@ -62,8 +66,9 @@ public class Character : MonoBehaviour
         
         //Choose damage
         rand_dmg = Random.Range(0, max_rand_dmg);
+        Debug.Log(enemies.name + " has " + enemies.transform.childCount + " children");
         target = enemies.transform.GetChild(Random.Range(0, enemies.transform.childCount)).gameObject;
-        Debug.Log(gameObject.name + " targets " + target.name);
+        Debug.Log(name + " targets " + target.name + " for "+ (base_dmg+rand_dmg)+" damage");
         
         //Create rotation of the arrows
         /*Quaternion rot = Quaternion.identity;
@@ -112,7 +117,6 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        find_enemies();
         make_choice();
         Debug.Log(gameObject.name + " with base "+base_dmg+" and rand addition " + rand_dmg + 
                   "\nWill target "+enemies.name);
