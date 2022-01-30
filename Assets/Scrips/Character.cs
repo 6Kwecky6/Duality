@@ -19,14 +19,18 @@ public class Character : MonoBehaviour
     private GameObject enemies;
 
     public GameObject targeter_prefab;
+    public GameObject target_arrow;
 
     public void take_damage(int dmg)
     {
         hp -= dmg;
+        
+        Debug.Log(name + " now has " + hp + " hp.");
         clean();
         if (hp <= 0)
         {
-            Destroy(this);
+            Debug.Log(name + " has been defeated");
+            Destroy(gameObject);
         }
         else
         {
@@ -36,7 +40,7 @@ public class Character : MonoBehaviour
     }
     void clean()
     {
-        Destroy(targeter_prefab);
+        Destroy(target_arrow);
         Debug.Log(name + " has deselected their target");
     }
     void make_choice()
@@ -66,7 +70,6 @@ public class Character : MonoBehaviour
         {
             targeter_prefab.transform.localScale = new Vector3((to.x - from.x)/4.9f, 2.0f, 1f);
 
-
         }
         
         
@@ -86,7 +89,7 @@ public class Character : MonoBehaviour
         start_x = mid_x+0.5f;
         
         }
-        Instantiate(targeter_prefab,
+        target_arrow = Instantiate(targeter_prefab,
         new Vector3(start_x, start_y, 0.0f),
         Quaternion.identity);
     }
