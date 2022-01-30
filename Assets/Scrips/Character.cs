@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     public int max_rand_dmg = 40;
     [HideInInspector]
     public int rand_dmg;
+
+    private healthBar bar;
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
@@ -33,7 +35,7 @@ public class Character : MonoBehaviour
     public void take_damage(int dmg)
     {
         hp -= dmg;
-        
+        bar.SetHealth(hp);
         Debug.Log(name + " now has " + hp + " hp.");
         clean();
         if (hp <= 0)
@@ -120,6 +122,8 @@ public class Character : MonoBehaviour
         make_choice();
         Debug.Log(gameObject.name + " with base "+base_dmg+" and rand addition " + rand_dmg + 
                   "\nWill target "+enemies.name);
+        bar = transform.Find("Canvas/health_bar").GetComponent<healthBar>();
+        bar.SetMaxHealth(hp);
     }
     
     
