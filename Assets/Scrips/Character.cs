@@ -20,6 +20,25 @@ public class Character : MonoBehaviour
 
     public GameObject targeter_prefab;
 
+    public void take_damage(int dmg)
+    {
+        hp -= dmg;
+        clean();
+        if (hp <= 0)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            
+            make_choice();
+        }
+    }
+    void clean()
+    {
+        Destroy(targeter_prefab);
+        Debug.Log(name + " has deselected their target");
+    }
     void make_choice()
     {
         //Choose damage
