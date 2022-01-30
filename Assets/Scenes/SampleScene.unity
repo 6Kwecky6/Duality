@@ -224,6 +224,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &215896777
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +326,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +511,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &784535481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1234,7 @@ Transform:
   m_GameObject: {fileID: 1486804724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.17, y: -0.04, z: 0}
-  m_LocalScale: {x: 4.4535236, y: 3.3773258, z: 1.0456}
+  m_LocalScale: {x: 5, y: 4.4535, z: 1.0456}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1337,6 +1340,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &1858910118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1508,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &1916980599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1643,7 @@ MonoBehaviour:
   rand_dmg: 0
   target: {fileID: 0}
   targeter_prefab: {fileID: 7919851236271845367, guid: 32913043c121ac14f971661d183322c4, type: 3}
+  target_arrow: {fileID: 0}
 --- !u!1 &2109002376
 GameObject:
   m_ObjectHideFlags: 0
