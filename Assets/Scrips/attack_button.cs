@@ -24,12 +24,11 @@ public class attack_button : MonoBehaviour
         
     }
 
-    void AttackClicked()
+    void team_attack(GameObject team)
     {
-        Debug.Log("Attack button has been pressed");
-        for (int i = 0; i < allies.transform.childCount;i++)
+        for (int i = 0; i < team.transform.childCount;i++)
         {
-            GameObject child = enemies.transform.GetChild(i).gameObject;
+            GameObject child = team.transform.GetChild(i).gameObject;
             Character character_script = child.GetComponent<Character>();
             int base_dmg = character_script.base_dmg;
             int rand_dmg = character_script.rand_dmg;
@@ -37,9 +36,17 @@ public class attack_button : MonoBehaviour
             GameObject child_target = character_script.target;
             Character target_char_script = child_target.GetComponent<Character>();
             target_char_script.take_damage(base_dmg+rand_dmg);
-
-
+            
         }
+    }
+    void AttackClicked()
+    {
         
+        Debug.Log("Attack button has been pressed");
+        allies = GameObject.Find("Allies");
+        enemies = GameObject.Find("Enemies");
+        
+        team_attack(allies);
+        team_attack(enemies);
     }
 }

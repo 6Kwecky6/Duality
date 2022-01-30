@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     
     private int hp = 100;
 
-    public int base_dmg = 1;
+    public int base_dmg = 20;
     public int max_rand_dmg = 4;
     public int rand_dmg;
 
@@ -43,8 +43,23 @@ public class Character : MonoBehaviour
         Destroy(target_arrow);
         Debug.Log(name + " has deselected their target");
     }
+
+    void find_enemies()
+    {
+        if (ally)
+        {
+            enemies = GameObject.Find("Enemies");
+        }
+        else
+        {
+            enemies = GameObject.Find("Allies");
+        }
+    }
     void make_choice()
     {
+        //Assess enemies
+        find_enemies();
+        
         //Choose damage
         rand_dmg = Random.Range(0, max_rand_dmg);
         target = enemies.transform.GetChild(Random.Range(0, enemies.transform.childCount)).gameObject;
@@ -97,14 +112,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ally)
-        {
-            enemies = GameObject.Find("Enemies");
-        }
-        else
-        {
-            enemies = GameObject.Find("Allies");
-        }
+        find_enemies();
         make_choice();
         Debug.Log(gameObject.name + " with base "+base_dmg+" and rand addition " + rand_dmg + 
                   "\nWill target "+enemies.name);
